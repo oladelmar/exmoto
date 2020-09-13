@@ -9,7 +9,7 @@ router
   .post(deliveryController.createDelivery);
 
 router
-  .route('/:id')
+  .route('/:trackingNumber')
   .get(deliveryController.getDelivery)
   .patch(deliveryController.updateDelivery)
   .delete(deliveryController.deleteDelivery);

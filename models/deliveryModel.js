@@ -3,53 +3,61 @@ const mongoose = require('mongoose');
 const deliverySchema = new mongoose.Schema({
   trackingNumber: {
     type: String,
-    required: true,
+    required: [true, 'Tracking number is required'],
     unique: true,
   },
   fromCountry: {
     type: String,
-    required: true,
+    required: [true, 'Country of origin is required'],
     default: 'Moldova',
   },
   fromCity: {
     type: String,
-    required: true,
+    required: [true, 'City of origin is required'],
   },
   toCountry: {
     type: String,
-    required: true,
+    required: [true, 'Destination country is required'],
   },
   toCity: {
     type: String,
-    required: true,
+    required: [true, 'Destination city is required'],
   },
   weight: {
     type: Number,
-    required: true,
+    required: [true, 'Weight is required'],
   },
   price: {
     type: Number,
-    required: true,
+    required: [true, 'Price is required'],
   },
   priceCurrency: {
     type: String,
+    required: [true, 'Price currency is required'],
     default: 'MDL',
   },
+  deliveryType: String,
+  receivedDate: {
+    type: Date,
+    required: [true, 'Received date is required'],
+  },
+  estimatedDeliveryDate: Date,
+  deliveredDate: Date,
   paid: {
     type: Boolean,
     default: false,
   },
-  deliveryType: String,
-  acceptedDate: {
-    type: Date,
-  },
-  deliveredDate: Date,
-  accepted: {
-    type: Boolean,
-  },
   delivered: {
     type: Boolean,
     default: false,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now(),
   },
 });
 
