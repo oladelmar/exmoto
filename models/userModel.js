@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const AppError = require('../utils/appError');
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -26,6 +27,7 @@ const userSchema = new mongoose.Schema({
       message: 'Password and password confirm do not match',
     },
   },
+  passwordChangedAt: Date,
   name: {
     type: String,
     required: [true, 'Username is required'],
@@ -65,6 +67,16 @@ userSchema.methods.comparePasswords = async function (
   userPassword
 ) {
   return await bcrypt.compare(incomingPassword, userPassword);
+};
+
+userSchema.methods.changedPswAfterJWTIssue = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000);
+
+    return changedTimestamp > JWTTimestamp;
+  }
+
+  return false;
 };
 
 const User = mongoose.model('User', userSchema);

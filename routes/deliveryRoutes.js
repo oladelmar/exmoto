@@ -1,17 +1,18 @@
 const express = require('express');
 const deliveryController = require('../controllers/deliveryController');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 
 router
   .route('/')
-  .get(deliveryController.getDeliveries)
-  .post(deliveryController.createDelivery);
+  .get(authController.protect, deliveryController.getDeliveries)
+  .post(authController.protect, deliveryController.createDelivery);
 
 router
   .route('/:trackingNumber')
   .get(deliveryController.getDelivery)
-  .patch(deliveryController.updateDelivery)
-  .delete(deliveryController.deleteDelivery);
+  .patch(authController.protect, deliveryController.updateDelivery)
+  .delete(authController.protect, deliveryController.deleteDelivery);
 
 module.exports = router;
