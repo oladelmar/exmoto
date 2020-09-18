@@ -23,30 +23,7 @@ const deliverySchema = new mongoose.Schema({
     type: String,
     required: [true, 'Destination city is required'],
   },
-  weight: {
-    type: Number,
-    required: [true, 'Weight is required'],
-  },
-  price: {
-    type: Number,
-    required: [true, 'Price is required'],
-  },
-  priceCurrency: {
-    type: String,
-    required: [true, 'Price currency is required'],
-    default: 'MDL',
-  },
-  deliveryType: String,
-  receivedDate: {
-    type: Date,
-    required: [true, 'Received date is required'],
-  },
   estimatedDeliveryDate: Date,
-  deliveredDate: Date,
-  paid: {
-    type: Boolean,
-    default: false,
-  },
   delivered: {
     type: Boolean,
     default: false,
