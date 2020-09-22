@@ -7,12 +7,26 @@ const router = express.Router();
 router.post('/signup', authController.signupUser);
 router.post('/login', authController.loginUser);
 
-router.route('/').get(userController.getAllUsers);
+router
+  .route('/')
+  .get(
+    authController.protect,
+    authController.restrictTo('admin', 'superadmin'),
+    userController.getAllUsers
+  );
 
 router
   .route('/:id')
-  .get(userController.getUser)
-  .patch(userController.updateUser)
-  .delete(userController.deleteUser);
+  .get(authController.protect, userController.getUser)
+  .patch(
+    authController.protect,
+    authController.restrictTo('admin', 'superadmin'),
+    userController.updateUser
+  )
+  .delete(
+    authController.protect,
+    authController.restrictTo('admin', 'superadmin'),
+    userController.deleteUser
+  );
 
 module.exports = router;

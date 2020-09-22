@@ -78,3 +78,12 @@ exports.protect = catchAsyncError(async (req, res, next) => {
 
   next();
 });
+
+exports.restrictTo = (...roles) => (req, res, next) => {
+  if (!roles.includes(req.user.userRole)) {
+    return next(
+      new AppError('You do not have rights to perform this action!', 403)
+    );
+  }
+  next();
+};

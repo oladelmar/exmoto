@@ -34,8 +34,6 @@ exports.getDelivery = catchAsyncError(async (req, res, next) => {
 });
 
 exports.createDelivery = catchAsyncError(async (req, res, next) => {
-  // const newDelivery = await Delivery.create({ trackingNumber, ...req.body });
-
   if (
     req.body.estimatedDeliveryDate &&
     req.body.estimatedDeliveryDate < Date.now()

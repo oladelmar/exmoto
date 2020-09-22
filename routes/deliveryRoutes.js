@@ -13,6 +13,10 @@ router
   .route('/:trackingNumber')
   .get(deliveryController.getDelivery)
   .patch(authController.protect, deliveryController.updateDelivery)
-  .delete(authController.protect, deliveryController.deleteDelivery);
+  .delete(
+    authController.protect,
+    authController.restrictTo('admin', 'superadmin'),
+    deliveryController.deleteDelivery
+  );
 
 module.exports = router;
