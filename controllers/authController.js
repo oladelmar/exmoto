@@ -13,7 +13,7 @@ const signAccessToken = (id) => {
 exports.signupUser = catchAsyncError(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
-    email: req.body.email,
+    username: req.body.username,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
   });
@@ -28,16 +28,16 @@ exports.signupUser = catchAsyncError(async (req, res, next) => {
 });
 
 exports.loginUser = catchAsyncError(async (req, res, next) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  if (!email || !password) {
-    return next(new AppError('Provide email and password', 400));
+  if (!username || !password) {
+    return next(new AppError('Provide username and password', 400));
   }
 
-  const user = await User.findOne({ email }).select('+password');
+  const user = await User.findOne({ username }).select('+password');
 
   if (!user || !(await user.comparePasswords(password, user.password))) {
-    return next(new AppError('Incorrect email or password', 401));
+    return next(new AppError('Incorrect username or password', 401));
   }
 
   const token = signAccessToken(user._id);

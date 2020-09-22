@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
+// const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const AppError = require('../utils/appError');
 
 const userSchema = new mongoose.Schema({
-  email: {
+  username: {
     type: String,
-    required: [true, 'Email is required'],
+    required: [true, 'Username is required'],
     unique: true,
     lowercase: true,
-    validate: [validator.isEmail, 'Provide a valid email'],
   },
   password: {
     type: String,
@@ -30,7 +29,6 @@ const userSchema = new mongoose.Schema({
   passwordChangedAt: Date,
   name: {
     type: String,
-    required: [true, 'Username is required'],
     unique: true,
   },
   accessToken: {
@@ -41,7 +39,7 @@ const userSchema = new mongoose.Schema({
   },
   userRole: {
     type: String,
-    required: [true, 'User role is required'],
+    enum: ['operator', 'admin', 'superadmin'],
     default: 'operator',
   },
   createdAt: {
