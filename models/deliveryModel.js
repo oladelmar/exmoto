@@ -28,6 +28,9 @@ const deliverySchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  recipient: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
