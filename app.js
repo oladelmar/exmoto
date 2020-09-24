@@ -3,11 +3,20 @@ const router = require('./routes');
 const AppError = require('./utils/appError');
 const errorHandler = require('./controllers/errorController');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 
 app.use(cors());
 app.options('*', cors());
+
+const limiter = rateLimit({
+  max: 600,
+  windowMs: 30 * 60 * 1000,
+  message: 'Too many requests from this IP, try again in 30 minutes',
+});
+
+app.use('/api', limiter);
 
 app.use(express.json());
 app.use('/', router);
