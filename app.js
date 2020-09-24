@@ -5,6 +5,7 @@ const errorHandler = require('./controllers/errorController');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
 
 const app = express();
 
@@ -22,6 +23,9 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 app.use(express.json({ limit: '20kb' }));
+
+app.use(mongoSanitize());
+
 app.use('/', router);
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
