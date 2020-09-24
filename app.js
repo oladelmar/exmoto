@@ -4,11 +4,14 @@ const AppError = require('./utils/appError');
 const errorHandler = require('./controllers/errorController');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 
 const app = express();
 
 app.use(cors());
 app.options('*', cors());
+
+app.use(helmet());
 
 const limiter = rateLimit({
   max: 600,
@@ -18,7 +21,7 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
-app.use(express.json());
+app.use(express.json({ limit: '20kb' }));
 app.use('/', router);
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
