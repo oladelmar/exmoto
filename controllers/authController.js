@@ -4,6 +4,16 @@ const AppError = require('../utils/appError');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
+const oneDayToMs = 24 * 60 * 60 * 1000;
+
+const cookieOptions = {
+  expires: new Date(
+    Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * oneDayToMs
+  ),
+  secure: process.env.NODE_ENV === 'production' ? true : false,
+  httpOnly: true,
+};
+
 const signAccessToken = (id) => {
   return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN,
@@ -20,10 +30,12 @@ exports.signupUser = catchAsyncError(async (req, res, next) => {
 
   const token = signAccessToken(newUser._id);
 
+  res.cookie('access_token', token, cookieOptions);
+
   res.status(201).json({
     status: 'success',
     message: 'Sign up successful',
-    access_token: token,
+    // access_token: token,
   });
 });
 
@@ -42,18 +54,22 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
 
   const token = signAccessToken(user._id);
 
+  res.cookie('access_token', token, cookieOptions);
+
   res.status(200).json({
     status: 'success',
-    access_token: token,
+    // access_token: token,
   });
 });
 
 exports.protect = catchAsyncError(async (req, res, next) => {
-  let token;
-  let authHeaders = req.headers.authorization;
-  if (authHeaders && authHeaders.startsWith('Bearer')) {
-    token = authHeaders.split(' ')[1];
-  }
+  // let token;
+  // let authHeaders = req.headers.authorization;
+  // if (authHeaders && authHeaders.startsWith('Bearer')) {
+  //   token = authHeaders.split(' ')[1];
+  // }
+
+  let token = req.cookies.access_token;
 
   if (!token) {
     return next(new AppError('Log in to get access', 401));
