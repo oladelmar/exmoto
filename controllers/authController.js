@@ -62,6 +62,14 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   });
 });
 
+exports.logoutUser = (req, res) => {
+  res.clearCookie('access_token');
+
+  res.status(204).json({
+    status: 'success',
+  });
+};
+
 exports.protect = catchAsyncError(async (req, res, next) => {
   // let token;
   // let authHeaders = req.headers.authorization;
