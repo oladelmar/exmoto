@@ -13,12 +13,6 @@ exports.getAllUsers = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.createUser = (req, res) => {
-  res.status(200).json({
-    message: 'Route not implemented yet',
-  });
-};
-
 exports.getUser = (req, res) => {
   res.status(200).json({
     message: 'Route not implemented yet',
