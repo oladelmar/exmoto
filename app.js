@@ -7,7 +7,6 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
-// const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -24,7 +23,6 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
-// app.use(cookieParser());
 app.use(express.json({ limit: '20kb' }));
 
 app.use(mongoSanitize());
