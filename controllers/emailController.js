@@ -15,20 +15,20 @@ exports.sendEmailToSupport = catchAsyncError(async (req, res, next) => {
 
   if (subject === 'REQUEST_DELIVERY') {
     await new Email().sendRequestDelivery(`
-      NAME: ${username}
+      ИМЯ: ${username}
       EMAIL: ${email}
-      PHONE: ${phone}
-      ORGANIZATION: ${organization}
-      DELIVERY ADDRESS: ${deliveryAddress}
-      DELIVERY TYPE: ${deliveryType}
-      WEIGHT: ${weight}
-      COMMENTS: ${message}
+      ТЕЛЕФОН: ${phone}
+      ОРГАНИЗАЦИЯ: ${organization}
+      АДРЕС ДОСТАВКИ: ${deliveryAddress}
+      ТИП ОТПРАВЛЕНИЯ: ${deliveryType}
+      ВЕС: ${weight}
+      КОММЕНТАРИИ: ${message}
     `);
   } else if (subject === 'CONTACT_US') {
     await new Email().sendContactUs(`
-      NAME: ${username}
+      ИМЯ: ${username}
       EMAIL: ${email}      
-      MESSAGE: ${message}
+      СООБЩЕНИЕ: ${message}
     `);
   } else {
     return next(new AppError('Upsupported email subject', 400));
