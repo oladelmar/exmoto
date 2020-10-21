@@ -6,8 +6,8 @@ const emailRouter = require('./emailRoutes');
 
 const router = Router();
 
-router.use('/api/v1/deliveries', deliveryRouter);
-router.use('/api/v1/users', userRouter);
-router.use('/api/v1/emails', emailRouter);
+router.use('/deliveries', deliveryRouter);
+router.use('/users', userRouter);
+router.use('/emails', emailRouter);
 
 module.exports = router;
