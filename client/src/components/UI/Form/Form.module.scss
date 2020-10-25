@@ -1,0 +1,50 @@
+@import './../../../styles/colors.scss';
+@import './../../../styles/mixins.scss';
+
+.Form {
+   display: flex;
+   max-width: 100%;
+
+   & > *:first-child {margin-right: .5rem;}
+
+   &Column {
+      flex-direction: column;
+   }
+}
+
+.FormBox {
+   display: flex;
+   flex-direction: column;
+   position: relative;
+
+   &__Error {
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      transform: translateY(0);
+      color:red;
+      font-size: 1.3rem;
+      transition: transform .2s;
+      font-weight: 700;
+      @include respond(bp10) {
+         bottom: 5px;
+         font-size: 1rem;
+      }
+
+      &__Active {
+         visibility: visible;
+         transform: translateY(120%);
+      }
+   }
+}
+
+.InvoiceForm {
+   display: flex;
+   flex-direction: column;
+   width: inherit;
+   position: relative;
+   & > * {margin-bottom: 1rem;}
+   & > *:last-child {margin-top: 2rem;}
+}
+
+

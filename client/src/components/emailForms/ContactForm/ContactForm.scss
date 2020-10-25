@@ -1,0 +1,13 @@
+.ContactForm {
+   width: 35rem;
+   height: 100%;
+   & > *:first-child {
+      margin:  1rem 0 2rem 0;
+   }
+
+   &__Heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+   }
+}

@@ -1,0 +1,74 @@
+@import './../../styles/colors.scss';
+
+.Admin {
+   max-width: 100vw;
+   max-height: 100%;
+   display: flex;
+}
+
+.Left-Side {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-direction: column;
+   position: relative;
+   z-index: 500;
+   background-color: $color-dark-white;
+   width: 35rem;
+   height: 100vh;
+   -webkit-box-shadow: 10px 0px 11px -6px rgba(0,0,0,0.3);
+   -moz-box-shadow: 10px 0px 11px -6px rgba(0,0,0,0.3);
+   box-shadow: 10px 0px 11px -6px rgba(0,0,0,0.3);
+   &__Logout {
+      margin-bottom: 5rem;
+   }
+}
+
+.Left-Side-Box {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+   max-width: 85%;
+   margin-top: 15rem;
+   & > *:first-child { margin-bottom: 5rem; }
+}
+
+.Search {
+   &__Title {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+   }
+
+   &__Results {
+      display: none;
+      border: 2px solid $color-grey-light;
+      border-radius: .3rem;
+      padding: 2rem;
+
+      &--Active {display: block;}
+   }
+   &__Result-Box {margin-top: 3rem;}
+
+   &__TrackID {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+   }
+
+   &__Settings {
+      & > *:not(:last-child) {margin-right: 1rem;}
+   }
+   &__Span {
+      font-size: 1.5rem;
+      font-weight: 400;
+   }
+}
+.Search .Form {
+   margin-bottom: 3rem;
+}
+
+.Right-Side {
+   width: 35%;
+   background-color: $color-white;
+}

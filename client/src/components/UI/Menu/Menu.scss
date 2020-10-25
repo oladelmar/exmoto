@@ -1,0 +1,32 @@
+@import './../../../styles/colors.scss';
+@import './../../../styles/mixins.scss';
+
+.Burger {
+   position: absolute;
+   height: 5.5rem;
+   width: 5.5rem;
+   top: 4rem;
+   right: -2.5rem;
+   display: none;
+   @include respond(bp3) {display: block;}
+
+   &__Icon {
+      position: absolute;
+      &,
+      &::before,
+      &::after {
+          width: 25px;
+          height: 3.5px;
+          background-color: #222;
+          display: inline-block;
+      }  
+      &::before,
+      &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+      }
+      &::before {top: -1rem;}
+      &::after {top: 1rem;}
+   }
+}

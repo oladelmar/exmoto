@@ -1,0 +1,13 @@
+.PriceCard {
+   position: absolute;
+   top: 16rem;
+   display: none;
+   z-index: 500;
+   width: 50rem;
+   height: 20rem;
+   background-color: #fbfbfb;
+
+   &--Active {
+      display: block;
+   }
+}

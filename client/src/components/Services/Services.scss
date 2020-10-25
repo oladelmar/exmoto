@@ -1,0 +1,47 @@
+@import './../../styles/container.scss';
+@import './../../styles/colors.scss';
+@import './../../styles/mixins.scss';
+
+.Services {
+   margin-top: 8rem;
+   @include respond(bp10) {
+      margin-top: 6rem;
+   }
+   &__Header {
+      font-size: 4rem;
+      text-align: center;
+      color: $color-green-dark;
+      @include respond(bp8) {font-size: 3.5rem;}
+   }
+}
+
+.Services-Box {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+   margin-top: 3rem;
+
+   @include respond(bp8) {flex-direction: column;}
+   & > *:not(:last-child) {
+      margin-right: 5rem;
+      @include respond(bp8) { 
+         margin-right: 0rem;
+         margin-bottom: 5rem;
+      }
+   } 
+
+   & > *:first-child:hover img {
+      transition: transform 1s;
+      transform: rotate(40deg);
+      // background-color: #222;
+   }
+   & > *:last-child:hover img {
+      transition: transform 1s;
+      transform: translate3d(40px, 0px, 0px);
+      // background-color: #222;
+   }
+}
+.Link {
+   text-decoration: none;
+}

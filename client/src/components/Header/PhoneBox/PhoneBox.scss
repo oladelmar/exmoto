@@ -1,0 +1,20 @@
+@import './../../../styles/colors.scss';
+@import './../../../styles/mixins.scss';
+
+.Phone {
+   display: flex;
+   justify-content: flex-start;
+
+   @include respond(bp1) {display: none;}
+}
+
+.PhoneBox {
+   color: #222;
+   list-style: none;
+   
+   & > *:not(:last-child) {padding: 0 0 .3rem 0;}
+   &__Item {
+      font-size: 1.2rem;
+      &--Bold {font-weight: 700;}
+   }
+}

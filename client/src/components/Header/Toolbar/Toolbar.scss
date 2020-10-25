@@ -1,0 +1,64 @@
+@import '../../../styles/container.scss';
+@import '../../../styles/mixins.scss';
+@import '../../../styles/colors.scss';
+
+.Toolbar {
+   width: 100%;
+   -webkit-box-shadow: 0px 3px 6px -1px rgba(0,0,0,0.2);
+   -moz-box-shadow: 0px 3px 6px -1px rgba(0,0,0,0.2);
+   box-shadow: 0px 3px 6px -1px rgba(0,0,0,0.2);
+   background-color: #fbfbfb;
+   position: fixed;
+   top: 0;
+   z-index: 888;
+}
+
+.Toolbar-Box {
+   display: flex;
+   flex-direction: column;
+
+   &__Price {
+      @include respond(bp11) {display: none;}
+   }
+
+   &__Top-Row {
+      @include flexbox;
+      align-items: center;
+      justify-content: space-between;
+      margin: 1rem 0 .1rem 0;
+      position: relative;
+      & > *:first-child {
+         @include respond(bp12) {margin-right: 1rem;}
+      }
+   
+      &__Price {
+         @include respond(bp11) {display: none;}
+      }
+
+      @include respond(bp4) {
+         // // flex-direction: column;
+         // justify-content: center;
+         // & > *:first-child {margin-bottom: 1rem;}
+      }
+   }
+
+   &__Line {
+      width: 110rem;
+      height: .1rem;
+      background-color: #222;
+      margin:0 auto;
+   }
+   &__Bottom-Row {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      height: 5rem;
+
+      @include respond(bp1) {
+         justify-content: space-around;
+      }
+   }
+}
+
+
+

@@ -1,0 +1,27 @@
+.Currency {margin-right: 5rem;}
+
+.Currency-Box {
+   display: flex;
+   font-size: 1.3rem;
+
+   &__LeftSide {
+      margin-right: 1rem;
+      & > *:first-child {margin-bottom: .4rem;}
+   }
+
+   &__RightSide {
+      & > *:first-child {margin-bottom: .4rem;}
+   }
+
+   &__Type {display: flex;}
+
+   &__Heading {
+      font-weight: 700;
+      margin-right: .5rem;
+   }
+
+   &__Value {
+      font-weight: 400;
+      
+   }
+}

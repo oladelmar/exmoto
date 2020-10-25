@@ -1,0 +1,28 @@
+@import './../../styles/colors.scss';
+@import './../../styles/container.scss';
+@import './../../styles/mixins.scss';
+
+.AboutUs {
+   margin-top: 8rem;
+   &__Heading {
+      font-size: 4rem;
+      text-align: center;
+      color: $color-green-dark;
+      margin-bottom: 2rem;
+      @include respond(bp8) {font-size: 3.5rem;}
+   }
+}
+
+.AboutUs-Box {
+   width: 100%;
+   & > *:first-child {margin-bottom: 2rem;}
+
+   &__Text {
+      font-size: 2rem;
+      line-height: 1.5;
+      text-align: center;
+      color: #222;
+      font-weight: 400;
+      @include respond(bp8) {font-size: 1.7rem;}
+   }
+}

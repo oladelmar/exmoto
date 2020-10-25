@@ -1,0 +1,22 @@
+@import './../../../styles/colors.scss';
+@import './../../../styles/container.scss';
+@import './../../../styles/mixins.scss';
+
+.Dots-Box {
+   display: flex;
+   position: absolute;
+   bottom: 5rem;
+   left: 15rem;
+   & > *:not(:last-child) {margin-right: 1rem;}
+
+   &__Dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 100px;
+      border: 1px solid  $color-green-light;
+      transition: background-color 1s ease-in;
+      cursor: pointer;
+
+      &--Active {background-color: $color-green-light;}
+   }
+}

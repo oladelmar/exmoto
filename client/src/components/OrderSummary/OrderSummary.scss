@@ -1,0 +1,87 @@
+@import './../../styles/colors.scss';
+@import './../../styles/mixins.scss';
+
+.OrderSummary {
+   &__List {
+      width: 100rem;
+      @include respond(bp2) {width: 65rem;}
+      @include respond(bp5) {width: 85rem;}
+      @include respond(bp6) {width: 75rem;}
+      @include respond(bp11) {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 25rem;
+         height: 40rem;
+      }
+   }
+
+   &__Header-Row, &__Body-Row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 7rem;
+      @include respond(bp11) {
+         flex-direction: column;
+         height: 100%;
+         width: 100%;
+         padding-top: 1rem;
+      }
+   }
+
+   &__Header-Row {
+      background-color: $color-green-dark;
+      color: $color-dark-white;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      letter-spacing: .1rem;
+      
+      & > *:last-child {
+         padding-right: 0rem;
+      }
+      @include respond(bp11) {
+         border-top-right-radius: 0px;
+         border-bottom-left-radius: 5px;
+         width: 15rem;
+         align-items: flex-start;
+         padding-left: 1rem;
+      }
+   }
+
+   &__Body-Row {
+      color: #222;
+      background-color: $color-grey-light;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      & > *:last-child {
+         padding-right: 2rem;
+      }
+      @include respond(bp11) {
+         border-bottom-left-radius: 0px;
+         border-top-right-radius: 5px;
+         width: 15rem;
+         padding-right: 0rem;
+      }
+   }
+
+   &__Header-Col, &__Body-Col {
+      flex-basis: 30%;
+      padding: 1rem 0;
+      text-align: center;
+   }
+
+   &__Header-Col {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      @include respond(bp7) {
+         text-align: left;
+      }
+   }
+
+   &__Body-Col {
+      font-size: 1.6rem;
+      font-weight: 400;
+      font-weight: 700;
+   }
+}

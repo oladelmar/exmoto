@@ -1,0 +1,39 @@
+@import './../../../styles/colors.scss';
+@import './../../../styles/mixins.scss';
+
+.Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 1.6rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.Close {
+   position: absolute;
+   right: -3rem;
+   top: -3rem;
+   width: 3.2rem;
+   height: 3.2rem;
+   cursor: pointer;
+ }
+ .Close:before, .Close:after {
+   position: absolute;
+   left: 1.5rem;
+   content: ' ';
+   height: 2.2rem;
+   width: .2rem;
+   background-color: $color-dark-white;
+ }
+ .Close:before {
+   transform: rotate(45deg);
+ }
+ .Close:after {
+   transform: rotate(-45deg);
+ }
+ 

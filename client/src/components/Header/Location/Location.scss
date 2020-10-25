@@ -1,0 +1,56 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/colors.scss';
+
+.Location {
+   @include flexbox;
+   @include flexCenter;
+   font-size: 1.6rem;
+   
+   @include respond(bp3) {display: none;}
+   &__Span {
+      font-weight: 700;
+      margin-right: 3rem;
+   }
+
+   &__List {
+      @include flexbox;
+      @include flexCenter;
+      list-style: none;
+      
+      & > * {
+         padding: 2rem 2rem;
+         @include respond(bp2) {padding: 2rem 1rem;}
+      }
+      & > *:nth-child(-n+4) .Location__Table  {left:-4rem;}
+   }
+
+   &__Item {
+      cursor: pointer;
+      transition: background-color .2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+   }
+
+   &__Item:hover {
+      background-color: $color-green-dark;
+      color: #fff;
+      border-radius: .2rem;
+   }
+
+   &__Table {
+      display: none;
+      position: absolute;
+      top: 6rem;
+      right: -4rem;
+      z-index: 500;
+      width: 45rem;
+      background-color: #fbfbfb;
+      // border: 5px solid #fff;
+      border-radius: 5px;
+
+      &--Active {display: block;} 
+   }
+}

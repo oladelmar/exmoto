@@ -1,0 +1,18 @@
+@import './../../styles/mixins.scss';
+.Main {
+   position: relative;
+   margin-top: 18rem;
+   @include respond(bp4) {
+      margin-top: 13rem;
+   }
+
+   &__Price {
+      @include respond(bp11) {
+         display: none;
+      }
+   }
+}
+
+.Main .Advertisement-Link {
+   margin-top: 8rem;
+}

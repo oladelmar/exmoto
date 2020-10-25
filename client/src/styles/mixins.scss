@@ -1,0 +1,79 @@
+/* 
+MEDIA QUERY MANAGER 
+breakpoint-1:  56.3125em    - 900px
+breakpoint-2: 53.125em    - 850px
+breakpoint-3: 45em    - 720px
+breakpoint-4: 37.5em    - 600px
+breakpoint-5: 67.5em    - 1080px
+breakpoint-6: 62.5em    - 1000px
+breakpoint-7: 43.75em  - 700px
+breakpoint-8:  33.75em   - 500px
+breakpoint-9: 68.75em   - 1100px
+breakpoint-10: 37.5em   - 600px
+breakpoint-11: 47.93em     - 767px
+breakpoint-12: 25em      - 400px
+
+
+breakpoint-1:  81.25em     - 1300px
+breakpoint-1:  75em     - 1200px
+breakpoint-2:  68,75em  - 1100px‬
+breakpoint-3:   62.5em  - 1000px
+breakpoint-4:  33,75em     - 500px
+breakpoint-6:  49.6875em     - 795px
+breakpoint-7:  47.93em     - 767px
+breakpoint-8:  43.75em     - 700px
+breakpoint-9:  25em     - 400px
+breakpoint-10:  65.62em     - 1050px
+*/
+
+@mixin respond($breakpoint) {
+   @if $breakpoint == bp1 {
+       @media (max-width: 56.3125em ) { @content; }
+   }
+   @if $breakpoint == bp2 {
+       @media (max-width: 53.125em) { @content; }
+   }
+   @if $breakpoint == bp3 {
+       @media (max-width: 45em) { @content; }
+   }
+   @if $breakpoint == bp4 {
+       @media (max-width: 37.5em) { @content; }
+   }
+   @if $breakpoint == bp5 {
+       @media (max-width: 67.5em) { @content; }
+   }
+   @if $breakpoint == bp6 {
+       @media (max-width: 62.5em) { @content; }
+   }
+   @if $breakpoint == bp7 {
+       @media (max-width: 43.75em) { @content; }
+   }
+   @if $breakpoint == bp8 {
+       @media (max-width: 33.75em) { @content; }
+   }
+   @if $breakpoint == bp9 {
+       @media (max-width:  68.75em) { @content; }
+   }
+   @if $breakpoint == bp10 {
+       @media (max-width: 37.5em) { @content; }
+   }
+   @if $breakpoint == bp11 {
+       @media (max-width: 47.93em) { @content; }
+   }
+   @if $breakpoint == bp12 {
+       @media (max-width: 25em) { @content; }
+   }
+}
+
+
+@mixin flexbox {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;  
+}
+
+@mixin flexCenter {
+  align-items: center;
+  justify-content: center;
+}

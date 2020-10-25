@@ -1,0 +1,17 @@
+@import './.././../../styles/mixins.scss';
+
+.Logo-box {
+   width: 25rem;
+   height: auto;
+   @include respond(bp4) {
+      width: 17rem;
+   }
+   @include respond(bp12) {
+      width: 15rem;
+   }
+
+   &__Image {
+      width: 100%;
+      height: auto;
+   }
+}
