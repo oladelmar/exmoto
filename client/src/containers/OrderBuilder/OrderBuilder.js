@@ -1,4 +1,4 @@
-import React, { useState, useRef} from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 
 import './OrderBuilder.scss';
 import axios from './../../axios-order';
@@ -6,6 +6,7 @@ import Modal from './../../components/UI/Modal/Modal';
 import OrderSummary from './../../components/OrderSummary/OrderSummary';
 import Form from './../../components/UI/Form/Form';
 import Input from './../../components/UI/Input/Input';
+import useFetch from './../../hooks/useFetch';
 
 const OrderBuilder = props => {
    const [orderState, setOrderState] = useState({
@@ -23,9 +24,8 @@ const OrderBuilder = props => {
       isValid: true,
       displayErrorText: ''
    });
-
+   const { sendRequest, data, loading, error, popup, isValid} = useFetch();
    const inputRef = useRef();
-
    const checkValidityHandler = event => {
       let value = event.target.value;
       let isValid = value.trim() !== '' && true;
@@ -73,6 +73,8 @@ const OrderBuilder = props => {
       };
 
       if (isFormValid) {
+         // sendRequest('get', `https://exmoto.herokuapp.com/api/v1/deliveries/${orderState.value}`);
+         
          axios.get(`/deliveries/${orderState.value}`)
          .then(response => {
             setOrderState( prevState => {
@@ -85,7 +87,6 @@ const OrderBuilder = props => {
             });
          })
          .catch(error => {
-            console.log(error);
             setOrderState( prevState => {
                return {
                   ...prevState,
@@ -95,9 +96,18 @@ const OrderBuilder = props => {
                }
             });
          })
-
       };
    };
+
+   useEffect(() => {
+      setOrderState( prevState => ({            
+         ...prevState,
+         showModal: popup,
+         searchResult: {...data},
+         isValid: isValid
+      }));   
+   }, []);
+
    return (
       <div className={props.class}>
          <Form 

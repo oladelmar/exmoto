@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import  { useCallback, useState } from 'react';
 
 import axios from 'axios';
 
@@ -7,10 +7,11 @@ const useFetch = () => {
       data: {},
       loading: false,
       error: false,
-      popup: false
+      popup: false,
+      isValid: false
    }); 
-
-   const sendRequest = useCallback((method, url, data, loading, error, popup) => {
+// console.log(state);
+   const sendRequest = useCallback((method, url) => {
       axios({
          method: method,
          url: url
@@ -20,23 +21,26 @@ const useFetch = () => {
                ...prevState,
                data: {...response.data.data},
                loading: false,
-               popup: true
+               popup: true,
+               isValid: true
             }));
          })
          .catch(error => {
             setState( prevState => ({
                ...prevState,
                loading: true,
+               isValid: false
             }));
          })
    }, []);
 
    return {
       sendRequest: sendRequest,
-      data: {},
-      loading: false,
-      error: false,
-      popup: false
+      data: {...state.data.delivery},
+      loading: state.loading,
+      error: state.error,
+      popup: state.popup,
+      isValid: state.isValid
    }
 
 };
