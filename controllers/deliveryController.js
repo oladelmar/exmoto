@@ -34,18 +34,6 @@ exports.getDelivery = catchAsyncError(async (req, res, next) => {
 });
 
 exports.createDelivery = catchAsyncError(async (req, res, next) => {
-  if (
-    req.body.estimatedDeliveryDate &&
-    req.body.estimatedDeliveryDate < Date.now()
-  ) {
-    return next(
-      new AppError(
-        'Estimated delivery date cannot be earlier than the current date',
-        400
-      )
-    );
-  }
-
   const newDelivery = await Delivery.create(req.body);
 
   res.status(201).json({
