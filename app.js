@@ -32,10 +32,7 @@ app.use(xss());
 
 app.use('/api/v1', router);
 
-console.log(`Dirname ${__dirname}`);
-
 app.use(express.static(path.join(__dirname, 'client/build')));
-// app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
 
 // Serve static assets in production
