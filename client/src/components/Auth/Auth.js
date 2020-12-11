@@ -53,12 +53,10 @@ const Auth = props => {
         }
         axios.post('/users/login', order)
         .then(response => {
-           console.log(response);
            sessionStorage.setItem('access__token', response.data.access_token);
            authContext.login(true);
         })
         .catch(error => {
-         console.log(error.response);
               setAuthConfig(prevState => ({
                ...prevState,
                isValid: false,

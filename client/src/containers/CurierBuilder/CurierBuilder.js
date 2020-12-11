@@ -108,7 +108,6 @@ const CurierBuilder = () => {
          })
       }
    };
-   console.log(curier);
 
    const handleClose = () => {
       resetData();

@@ -6,8 +6,6 @@ export const getEpochTime = (date) => {
 
 export const epochToDate = (epoch, separ) => {        
    const date = new Date(epoch);
-   // console.log(date.date.getMonth() + 1);
-   // console.log(`${('0' + date.getDate()).slice(-2)}${separ}${('0' + date.getMonth() + 1).slice(-2)}${separ}${date.getFullYear()}`);
    return `${('0' + date.getDate()).slice(-2)}${separ}${('0' + (date.getMonth()+1)).slice(-2)}${separ}${date.getFullYear()}`;
 }
 
@@ -15,6 +13,7 @@ export const epochToDate = (epoch, separ) => {
 export const createInputConfig = (elemType, inpType, label, placeholder, disabled) => ({
    elemType: elemType,
    disabled: disabled,
+   countryBox: false,
    value: '',
    elemConfig: {
       inpType: inpType,

@@ -15,6 +15,9 @@ const EditInvoice = props => {
             closeForm={props.closeForm}
             heading={'Редактировать накладную'}
             btnText={'Изменить'}
+            countries = {props.countries}
+            onBlurHandler = {inpId => props.onBlurHandler(inpId)}
+            selectCountryHandler = {(event, inpId) => props.selectCountryHandler(event, inpId)}
          />
       </>
    );

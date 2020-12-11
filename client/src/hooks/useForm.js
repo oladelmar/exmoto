@@ -6,7 +6,6 @@ const useForm = () => {
    const handleChange = e => {
       const {value, name} = e.target;
       setValues(prevState => {
-         console.log(prevState);
          return {
             state:{
                ...prevState.state,
