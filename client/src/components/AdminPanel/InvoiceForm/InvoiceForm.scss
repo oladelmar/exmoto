@@ -15,6 +15,25 @@
 }
 
 .InvoiceForm {
+   &__CountryBox{
+      position: absolute;
+      z-index: 500;
+      list-style: none;
+      padding:  1rem;
+      font-size: 1.4rem;
+      background-color: #fff;
+      border: 1px solid #222;
+      border-radius: .3rem;
+      & > * {
+         padding: 1rem;
+         cursor: pointer;
+      }
+
+      & > *:hover {
+         background-color: $color-grey-light;
+         border-radius: .3rem;
+      }
+   }
    &__Label {
       font-size: 1.4rem;
       font-weight: 700;

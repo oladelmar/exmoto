@@ -23,6 +23,26 @@ const Input = forwardRef((props, ref) => {
             />
          </>
       break;
+      case('search-input'): fieldType =
+         <div >
+            <label className="InvoiceForm__Label">{props.elemConfig.label}</label>
+            <input
+               type={props.elemConfig.inpType} 
+               ref={ref}
+               name={props.name}
+               className={styles[props.inpStyle]}
+               placeholder={props.elemConfig.placeholder} 
+               onChange={props.addChangeHandle  ? event => props.onChangeHandler(event) : null}
+               
+               disabled={props.disabled}
+               autoComplete='on'
+               value ={props.value}
+            />
+            <ul className="InvoiceForm__CountryBox" style={{display: props.showCountryBox ? 'block' : 'none'}} onMouseLeave={props.onBlurHandler}>
+               {props.countries.map(country => <li key={`${country + 'key'}`} onClick={props.selectCountryHandler}>{country}</li>)}
+            </ul>
+         </div>
+      break;
       case('textarea'): fieldType =
          <>
             <label className="InvoiceForm__Label">{props.elemConfig.label}</label>

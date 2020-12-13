@@ -73,7 +73,6 @@ const MessagesBuilder = () => {
          
          axios.post('/emails', data)
          .then(response => {
-            console.log(response);
             resetData();
          })
          .catch(error => {

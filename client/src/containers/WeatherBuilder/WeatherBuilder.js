@@ -22,7 +22,6 @@ const WeatherBuilder = () => {
          });                  
       })
       .catch(err => {
-         console.log(err);
          setWeather(prevState => ({ 
                ...prevState,
                showSpinner: true
