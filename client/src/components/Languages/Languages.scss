@@ -1,0 +1,20 @@
+@import './../../styles/colors.scss';
+
+.Language-Box {
+   display: flex;
+   font-size: 2rem;
+   & > *:last-child {padding-left: .1rem;}
+   &__Button {
+      font-size: 1.5rem;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: $color-green-dark;
+      font-weight: 700;
+      letter-spacing: .1rem;
+      cursor: pointer;
+      &:hover {
+         color: $color-green-light;
+      }
+   }
+}
