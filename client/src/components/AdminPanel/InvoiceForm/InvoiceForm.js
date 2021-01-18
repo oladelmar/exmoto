@@ -17,6 +17,11 @@ const InvoiceForm = props => {
             inpStyle='Form-Input'
             disabled={props.formState.invoiceForm[inp].disabled}
             defaultValue={props.formState.invoiceForm[inp].value}
+            showCountryBox = {props.formState.invoiceForm[inp].countryBox}
+            countries = {props.countries}
+            onBlurHandler = {() => props.onBlurHandler(inp)}
+            selectCountryHandler = {event => props.selectCountryHandler(event, inp)}
+            value = {props.formState.invoiceForm[inp].value}
          />
          );
    });

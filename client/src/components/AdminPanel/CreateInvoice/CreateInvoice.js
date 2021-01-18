@@ -15,6 +15,10 @@ const CreateInvoice = props => {
             closeForm={props.closeForm}
             heading={'Добавить накладную'}
             btnText={'Добавить'}
+            showCountryBox = {props.showCountryBox}
+            countries = {props.countries}
+            onBlurHandler = {inpId => props.onBlurHandler(inpId)}
+            selectCountryHandler = {(event, inpId) => props.selectCountryHandler(event, inpId)}
          />
       </>
    );

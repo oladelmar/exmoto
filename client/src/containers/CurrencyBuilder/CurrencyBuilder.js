@@ -37,10 +37,9 @@ const CurrencyBuilder = () => {
       }))
    }, []);
 
-   console.log(epochToDate(new Date(),'.'));
 
    useEffect(() => {
-      axios.get('https://cors-anywhere.herokuapp.com/' + `http://www.bnm.md/ro/official_exchange_rates?get_xml=1&date=${epochToDate(new Date(),'.')}`)
+      axios.get(`https://cors-anywhere.herokuapp.com/http://www.bnm.md/ro/official_exchange_rates?get_xml=1&date=${epochToDate(new Date(),'.')}`)
       .then( res => {
          setCurrency(prevState =>({
             ...prevState,
@@ -48,7 +47,6 @@ const CurrencyBuilder = () => {
          }));
          handleXmlData(res.data);
       }).catch(err => {
-         console.log(err);
          setCurrency(prevState =>({
             ...prevState,
             showSpinner: true
