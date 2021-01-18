@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useTranslation }  from 'react-i18next';
 
 import './OrderBuilder.scss';
 import axios from './../../axios-order';
@@ -7,7 +8,9 @@ import OrderSummary from './../../components/OrderSummary/OrderSummary';
 import Form from './../../components/UI/Form/Form';
 import Input from './../../components/UI/Input/Input';
 
+
 const OrderBuilder = props => {
+   // const { t } = useTranslation();
    const [orderState, setOrderState] = useState({
       errorMessage: {
          emptyField: "Заполните поле",
@@ -15,7 +18,7 @@ const OrderBuilder = props => {
       },
       elemConfig: {
          inpType: 'text',
-         placeholder: 'поиск накладной',
+         // placeholder: t('SearchOrder.1'),2
       },
       value: '',
       searchResult: {},
@@ -23,8 +26,10 @@ const OrderBuilder = props => {
       isValid: true,
       displayErrorText: ''
    });
-  
+
+
    const inputRef = useRef();
+
    const checkValidityHandler = event => {
       let value = event.target.value;
       let isValid = value.trim() !== '' && true;
@@ -97,7 +102,6 @@ const OrderBuilder = props => {
          })
       };
    };
-
 
    return (
       <div className={props.class}>

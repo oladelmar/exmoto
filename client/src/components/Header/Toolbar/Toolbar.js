@@ -7,6 +7,7 @@ import OrderBuilder from './../../../containers/OrderBuilder/OrderBuilder';
 import Button from './../../UI/Button/Button';
 import Weather from './../../../containers/WeatherBuilder/WeatherBuilder';
 import Currency from './../../../containers/CurrencyBuilder/CurrencyBuilder';
+import LanguagesBuilder from './../../../containers/LanguageBuilder/LanguageBuilder';
 
 const Toolbar = () => {
    return (
@@ -25,6 +26,7 @@ const Toolbar = () => {
                </div>
                <div className="Toolbar-Box__Line"></div>
                <div className="Toolbar-Box__Bottom-Row">
+                  {/* <LanguagesBuilder/> */}
                   <Currency/>
                   <Weather/>
                </div>

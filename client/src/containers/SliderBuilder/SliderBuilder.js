@@ -159,9 +159,6 @@ const SliderBuilder = () => {
       }
 
    }, []);
-
-
-
    
    // Рендерим слайды
    const allslids = slider.sliderData.map(slide => (

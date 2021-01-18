@@ -86,8 +86,8 @@ const PricePage = () => {
          cityData: {
             moscow: {
                city: 'Москва',
-               priceNoNds: '350',
-               priceNds: '420',
+               priceNoNds: '400',
+               priceNds: '480',
                priceplus: '50',
                delivery: '3/5 рабочих дня'
             } ,             
