@@ -11,24 +11,24 @@ import AboutUs from './../../components/AboutUs/AboutUs';
 import Advertisement from './../../components/Advertisement/Advertisement';
 import Curier from './../../containers/CurierBuilder/CurierBuilder';
 
-const Layout = props => {
+const Layout = () => {
    return (
-      <>
-         <Toolbar/>
+      <div>
+         <Toolbar />
          <main className="Main">
             <Switch>
-               <Route path={'/price'} component={PricePage}/>
-               <Route path={'/delivery'} component={Curier}/>
+               <Route path={'/price'} component={PricePage} />
+               <Route path={'/delivery'} component={Curier} />
                <Route path={'/'}>
-                  <SliderBuilder/>
-                  <Advertisement/>
-                  <Messages/>
-                  <AboutUs/>
+                  <SliderBuilder />
+                  <Advertisement />
+                  <Messages />
+                  <AboutUs />
                </Route>
             </Switch>
          </main>
-         <Footer/>
-      </>
+         <Footer />
+      </div>
    );
 };
 
