@@ -2,6 +2,7 @@
 
 .Language-Box {
    display: flex;
+   align-items: center;
    font-size: 2rem;
    & > *:last-child {padding-left: .1rem;}
    &__Button {
@@ -16,5 +17,9 @@
       &:hover {
          color: $color-green-light;
       }
+   }
+
+   &__Icon {
+      width: 50%;
    }
 }

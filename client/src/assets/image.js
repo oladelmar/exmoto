@@ -5,3 +5,5 @@ export const Curier = require('./images/curier.svg');
 export const Envelope = require('./images/envelope.svg'); 
 export const Ariix = require('./images/logo-ariix.png'); 
 export const AriixWhite = require('./images/logo-ariix-white.png'); 
+export const RusIcon = require('./images/rus-icon.png'); 
+export const RoIcon = require('./images/ro-icon.png'); 

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useTranslation }  from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import './OrderBuilder.scss';
 import axios from './../../axios-order';
@@ -10,11 +10,11 @@ import Input from './../../components/UI/Input/Input';
 
 
 const OrderBuilder = props => {
-   // const { t } = useTranslation();
+   const { t } = useTranslation();
    const [orderState, setOrderState] = useState({
       errorMessage: {
-         emptyField: "Заполните поле",
-         noResult: "Нет данных по номеру"
+         emptyField: `${t('Заполните поле')}`,
+         noResult: `${t('Нет данных по номеру')}`
       },
       elemConfig: {
          inpType: 'text',
@@ -33,7 +33,7 @@ const OrderBuilder = props => {
    const checkValidityHandler = event => {
       let value = event.target.value;
       let isValid = value.trim() !== '' && true;
-      setOrderState( prevState => {
+      setOrderState(prevState => {
          return {
             ...prevState,
             isValid: isValid,
@@ -43,17 +43,18 @@ const OrderBuilder = props => {
    };
 
    const closeOrderTableHandler = () => {
-      setOrderState( prevState => {
+      setOrderState(prevState => {
          return {
-            ...prevState,  
-            searchResult: {}, 
+            ...prevState,
+            searchResult: {},
             showModal: false,
             isValid: true
-      }});
+         }
+      });
    }
 
    const inputOnFocusHandler = () => {
-      setOrderState( prevState => {
+      setOrderState(prevState => {
          return {
             ...prevState,
             showModal: false,
@@ -71,49 +72,50 @@ const OrderBuilder = props => {
          setOrderState(prevState => {
             return {
                ...prevState,
-            showModal: prevState.showModal,
-            isValid: false,
-            displayErrorText: orderState.errorMessage.emptyField
-         }});
+               showModal: prevState.showModal,
+               isValid: false,
+               displayErrorText: orderState.errorMessage.emptyField
+            }
+         });
       };
 
       if (isFormValid) {
 
          axios.get(`/deliveries/${orderState.value}`)
-         .then(response => {
-            setOrderState( prevState => {
-               return {
-                  ...prevState,
-                  showModal: true,
-                  isValid: true,
-                  searchResult: {...response.data.data.delivery}
-               }
-            });
-         })
-         .catch(error => {
-            setOrderState( prevState => {
-               return {
-                  ...prevState,
-                  showModal: false,
-                  isValid: false,
-                  displayErrorText: orderState.errorMessage.noResult
-               }
-            });
-         })
+            .then(response => {
+               setOrderState(prevState => {
+                  return {
+                     ...prevState,
+                     showModal: true,
+                     isValid: true,
+                     searchResult: { ...response.data.data.delivery }
+                  }
+               });
+            })
+            .catch(error => {
+               setOrderState(prevState => {
+                  return {
+                     ...prevState,
+                     showModal: false,
+                     isValid: false,
+                     displayErrorText: orderState.errorMessage.noResult
+                  }
+               });
+            })
       };
    };
 
    return (
       <div className={props.class}>
-         <Form 
+         <Form
             onSubmitHandler={event => orderHandler(event)}
             isValid={orderState.isValid}
             errText={orderState.displayErrorText}
-            btnText='поиск'
+            btnText={t('поиск')}
             btnStyle='Button__GreenSearch'
             formStyle='FormBox'
          >
-           <Input 
+            <Input
                elemtype='input'
                elemConfig={orderState.elemConfig}
                inpStyle='Search-Input'
@@ -122,13 +124,13 @@ const OrderBuilder = props => {
                onBlurHandler={inputOnFocusHandler}
                addChangeHandle={true}
                addBlurHandle={true}
-            />     
+            />
          </Form>
          <Modal show={orderState.showModal} close={closeOrderTableHandler}>
-            <OrderSummary searchResult={orderState.searchResult}/>
+            <OrderSummary searchResult={orderState.searchResult} />
          </Modal>
-       </div>
-   ); 
+      </div>
+   );
 }
 
 export default OrderBuilder;

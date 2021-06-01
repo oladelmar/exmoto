@@ -3,12 +3,15 @@ import React from 'react';
 import './ContactForm.scss';
 import Form from './../../UI/Form/Form';
 import Input from './../../UI/Input/Input';
+import { useTranslation } from 'react-i18next';
 
 const ContactForm = props => {
+   const { t } = useTranslation();
+
    const allInputs = Object.keys(props.elemConfig).map(key => (
       <Input
          key={key}
-         elemtype={props.elemConfig[key].elemType} 
+         elemtype={props.elemConfig[key].elemType}
          elemConfig={props.elemConfig[key].elemConfig}
          onChangeHandler={event => props.handleChange(event, key)}
          addChangeHandle={true}
@@ -19,7 +22,7 @@ const ContactForm = props => {
    ))
    return (
       <div className="ContactForm">
-         <h3 className="ContactForm__Heading">НАПИСАТЬ НАМ:</h3>
+         <h3 className="ContactForm__Heading">{t('НАПИСАТЬ НАМ')}:</h3>
          <Form
             column={true}
             onSubmitHandler={event => props.handleSubmit(event)}
@@ -27,9 +30,9 @@ const ContactForm = props => {
             btnStyle='Button__GreenMarginTop'
             btnCloseStyle="Button__Green"
             formStyle='InvoiceForm'
-            completeText='Сообщение отправлено'
-            errText='Заполните пустые поля'
-            btnText='ОТПРАВИТЬ'
+            completeText={t('Сообщение отправлено')}
+            errText={t('Заполните пустые поля')}
+            btnText={t('ОТПРАВИТЬ')}
             id={props.id}
          >
             {allInputs}

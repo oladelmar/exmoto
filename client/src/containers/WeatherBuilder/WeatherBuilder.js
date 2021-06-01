@@ -16,7 +16,7 @@ const WeatherBuilder = () => {
       weatherAxios.get(`weather?q=Chisinau&appid=${API.key}&units=metric`)
       .then(res => {
          setWeather({ 
-           temp: res.data.main.temp,
+           temp: Math.round(res.data.main.temp),
            icon: res.data.weather[0].icon,
            showSpinner: false
          });                  
